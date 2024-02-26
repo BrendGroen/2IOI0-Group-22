@@ -69,10 +69,26 @@ def download_and_extract_gzip(url: str, save_path: str, extract_path: str, file_
 if __name__ == "__main__":
     # Adapt the following variables to the specific values you want
     # Or you could just leave them as they are and use the default values
+    # 2018 BPI Challenge data
     gzip_data_url = 'https://data.4tu.nl/file/443451fd-d38a-4464-88b4-0fc641552632/cd4fd2b8-6c95-47ae-aad9-dc1a085db364'
+    file_name = 'BPI_challenge_2018.xes.gz'
+
+    # 2017 BPI Challenge data
+    # gzip_data_url = 'https://data.4tu.nl/file/34c3f44b-3101-4ea9-8281-e38905c68b8d/f3aec4f7-d52c-4217-82f4-57d719a8298c'
+    # file_name = 'BPI_challenge_2017.xes.gz'
+
+    # Road Traffic Fine Management Process data
+    # gzip_data_url = 'https://data.4tu.nl/file/806acd1a-2bf2-4e39-be21-69b8cad10909/b234b06c-4d4f-4055-9f14-6218e3906d82'
+    # file_name = 'Road_Traffic_Fine_Management_Process.xes.gz'
+
+    # 2012 BPI Challenge data
+    # gzip_data_url = 'https://data.4tu.nl/file/533f66a4-8911-4ac7-8612-1235d65d1f37/3276db7f-8bee-4f2b-88ee-92dbffb5a893'
+    # file_name = 'BPI_challenge_2012.xes.gz'
+
     gzip_save_path = 'data/zipped'
     extract_folder = 'data/extracted'
-    file_name = 'BPI_challenge_2018.xes.gz'
+    
+    ################################# Running the data fetcher ##################################
 
     download_and_extract_gzip(
         gzip_data_url, gzip_save_path, extract_folder, file_name)
