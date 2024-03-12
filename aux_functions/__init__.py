@@ -1,1 +1,1 @@
-from .split_dataset import split_train_test
+from .split_dataset import split_data
