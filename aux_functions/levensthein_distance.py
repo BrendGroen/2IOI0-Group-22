@@ -1,4 +1,4 @@
-def converting_process_to_words(dataframe, concept_name, concept_name_predictions, position, case_concept_name):
+def compute_damerau_levensthein_distance(dataframe, concept_name, concept_name_predictions, position, case_concept_name):
 
 
     """
@@ -7,19 +7,19 @@ def converting_process_to_words(dataframe, concept_name, concept_name_prediction
     Converts each process into words based on the alphabet mapping
     The same is done for predicted activities
     Computes the levensthein distance
-
     
     param dataframe: a dataframe with the below below parameters included as columns     
     param concept_name: the activity, also called concept:name in the dataset
     param concept_name: the predicted activity
     param position: the position within the process
     param case_concept_name: the unique case id, also called the case:concept:name in the dataset
+
+    Ignore "SettingWithCopyWarning"
     
-    
-    
+
     """
 
-
+    import pandas as pd
 
     df_mapping = dataframe[dataframe[concept_name] != "A_SUBMITTED"]
     
