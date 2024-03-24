@@ -7,6 +7,7 @@ def compute_damerau_levensthein_distance(dataframe, concept_name, concept_name_p
     Converts each process into words based on the alphabet mapping
     The same is done for predicted activities
     Computes the levensthein distance
+    Also computes the normalized levensthein distance which is done using the formula (1 - distance) / max string length
     
     param dataframe: a dataframe with the below below parameters included as columns     
     param concept_name: the activity, also called concept:name in the dataset
@@ -75,4 +76,21 @@ def compute_damerau_levensthein_distance(dataframe, concept_name, concept_name_p
     
     merged_df['damerau_levenshtein_distance'] = merged_df.apply(lambda row: calculate_distance(row), axis=1)
 
+    actual_max = max(merged_df["alphabet_mapping"].str.len())
+    predicted_max = max(merged_df["alphabet_mapping_predictions"].str.len())
+    
+    max_length = max(actual_max, predicted_max)
+    
+    merged_df["damerau_levensthein_distance_normalized"] = (1 - merged_df["damerau_levenshtein_distance"]) / max_length
+
     return merged_df
+
+
+
+# Testing code:
+
+#import pandas as pd
+
+#df = pd.read_csv("2012_preprocessed.csv")
+
+#compute_damerau_levensthein_distance(df, "concept:name", "concept:name", "position", "case:concept:name")
